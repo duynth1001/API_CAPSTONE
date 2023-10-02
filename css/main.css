@@ -38,6 +38,8 @@
   display: none;
 }
 
+
+
 .login, .register {
   margin-top: 9%;
 }
@@ -59,4 +61,5 @@
     margin: auto;
     width: 50vw;
   }
+
 }/*# sourceMappingURL=main.css.map */
