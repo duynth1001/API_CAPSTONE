@@ -1,0 +1,36 @@
+@import '../Helpers/mixin.scss';
+@import '../Helpers/variables.scss';
+.navbar{
+    padding: 10px 0;
+    .active{
+        color:$primary-color ;
+    }
+    .nav-item{
+        .active{
+            color: $primary-color;
+        }
+        &:hover{
+            .nav-link{
+                color: $primary-color;
+            }
+            .dropdown-menu{
+                a{
+                    color: black
+                }
+            }
+        }
+        @include nav;
+    }
+    
+    #cart{
+        text-decoration: none;
+        color: black;
+        
+    }
+    #navbarNavDropdown{
+        .navbar-nav{
+            margin-left: auto;
+        }
+    }
+}
+

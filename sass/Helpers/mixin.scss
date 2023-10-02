@@ -1,0 +1,27 @@
+@mixin responsive($break-point){
+    @if $break-point == large{
+        @media (max-width: 1199px) {
+            @content;
+        }
+    }
+    @if $break-point == medium{
+        @media (max-width : 991.5px) {
+            @content;
+        }
+    }
+    @if $break-point == small{
+        @media (max-width: 767.5px) {
+            @content;
+        }
+    }
+}
+
+@mixin nav{
+    font-size: 16px;
+    padding: 5px 10px;
+    color: var(--ltn__heading-color);
+    font-weight: 700;
+    color: #071c1f;
+}
+
+

@@ -1,0 +1,29 @@
+.navbar {
+  padding: 10px 0;
+}
+.navbar .active {
+  color: #f8796c;
+}
+.navbar .nav-item {
+  font-size: 16px;
+  padding: 5px 10px;
+  color: var(--ltn__heading-color);
+  font-weight: 700;
+  color: #071c1f;
+}
+.navbar .nav-item .active {
+  color: #f8796c;
+}
+.navbar .nav-item:hover .nav-link {
+  color: #f8796c;
+}
+.navbar .nav-item:hover .dropdown-menu a {
+  color: black;
+}
+.navbar #cart {
+  text-decoration: none;
+  color: black;
+}
+.navbar #navbarNavDropdown .navbar-nav {
+  margin-left: auto;
+}/*# sourceMappingURL=header.css.map */

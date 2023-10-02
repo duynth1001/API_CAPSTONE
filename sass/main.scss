@@ -1,0 +1,34 @@
+@import './Helpers/mixin.scss';
+@import './Helpers/variables.scss';
+@import './components/header.scss';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.hide{
+    display: none;
+}
+
+.login{
+    margin-top: 9%;
+    .image{
+        width: 100%;
+        height: 400px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    form{
+        width: 24vw;
+        @include responsive(medium){
+            margin: auto;
+            width: 50vw;
+        }
+    }
+}
+.register{
+    @extend .login
+}
