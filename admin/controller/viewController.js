@@ -18,11 +18,17 @@ function renderProductsList(productsList) {
       <td>${product.qty}</td>
       <td><img style="width:150px;heigh:50px" src="${product.imageUrl}" ></td>
       <td>
+      <div class="row">
+      <div class="col">
       <button class="btn btn-warning" onclick="editProductView(
         '${product.id}'
       )">Sửa</button>
+      </div>
+      <div class="col">
       <button class="btn btn-danger" onclick="deleteProductView('${product.id}')">Xóa</button>
-    </td>
+      </div>
+        </div>
+      </td>
         </tr>
           `;
     content += contentTr;

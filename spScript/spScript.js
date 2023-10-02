@@ -1,6 +1,0 @@
-const viewwidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-const viewheight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-document.querySelector('#cusPage').setAttribute('width',`${viewwidth}px;`)
-document.querySelector('#cusPage').setAttribute('height',`${viewheight}px;`)
-document.querySelector('#adminPage').setAttribute('width',`${viewwidth}px;`)
-document.querySelector('#adminPage').setAttribute('height',`${viewheight}px;`)
