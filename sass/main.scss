@@ -32,3 +32,28 @@
 .register{
     @extend .login
 }
+.history{
+    margin-top: 100px;
+    
+}
+.historyDetail{
+    margin-top: 100px;
+    img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+}
+#adminButton{
+    display: flex;
+}
+#AdminOderDetailTable{
+    img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+}
+.tableDetail{
+    cursor: pointer;
+}
