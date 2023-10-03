@@ -6,6 +6,7 @@ let loginComponent = document.querySelector(".login")
 let registerComponent = document.querySelector(".register")
 let homeComponent = document.querySelector(".home")
 let navItem = document.querySelectorAll(".nav-item .nav-link")
+let homebtn = document.querySelector('#home')
 let logout =  document.getElementById("logout")
 let adminComponent = document.querySelector(".admin")
 let registerToShop = document.getElementById("registerToShop")
@@ -28,8 +29,11 @@ function saveAdmin(user){
         if(user){
             if(user.emailLogin.toLowerCase() == "admin2003@gmail.com"){
                 admin.classList.remove("hide")
-                homeComponent.classList.remove("hide")
+                history.classList.add("hide")
+                homeComponent.classList.add("hide")
                 historyComponent.classList.add("hide")
+                homebtn.classList.add('hide')
+                adminComponent.classList.remove('hide')
                 detailHistory.classList.add("hide")
                 AdminOrderComponent.classList.add("hide")
                 AdminOrderDetail.classList.add("hide")
@@ -49,6 +53,7 @@ const saveUser = () =>{
         document.getElementById("history").classList.remove("hide")
         homeComponent.classList.remove("hide")
         loginComponent.classList.add("hide")
+        homebtn.classList.remove('hide')
         registerComponent.classList.add("hide")
         logout.classList.remove("hide")
         document.getElementById("account").innerText = users.nameLogin 
@@ -135,6 +140,7 @@ logout.addEventListener("click",()=>{
     detailHistory.classList.add("hide")
     AdminOrderComponent.classList.add("hide")
     AdminOrderDetail.classList.add("hide")
+    homebtn.classList.remove('hide')
 })
 
 
