@@ -19,7 +19,7 @@ function saveAdmin(user){
         if(user){
             if(user.emailLogin.toLowerCase() == "admin2003@gmail.com"){
                 admin.classList.remove("hide")
-                homeComponent.classList.add("hide")
+                homeComponent.classList.remove("hide")
             }
             else{
             admin.classList.add("hide")

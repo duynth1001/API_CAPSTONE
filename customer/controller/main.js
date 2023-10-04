@@ -121,7 +121,8 @@ window.minusItemQty = (id) => {
   let cartListLocal = cartListGlobal.getSelectedCartList();
   const index = findIndex(id, cartListLocal);
   if (index != -1) {
-    if (cartListGlobal.cartItemList[index].qty == 0) {
+    if (cartListGlobal.cartItemList[index].qty == 1) {
+      removeCartItem(id);
       return;
     }
     cartListGlobal.cartItemList[index].qty--;
@@ -147,12 +148,46 @@ window.emptyCart = () => {
 
 //pay 
 window.payNow = ()=>{
-  alert('Xin cảm ơn quý khách đã tin tưởng Cyber Phone! Đơn hàng của quý khách đang được xử lý, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.')
-  cartListGlobal.cartItemList = [];
-  //Total money
-  getElement("#priceTotal").innerHTML = `0$`;
-    //write to local 
-    wirteLocal(cartListGlobal,Cart_Local)
-  renderSelectedCartList([]);
+  if(checkLogin()){
+    let cart = JSON.parse(localStorage.getItem("Cart_Local")).cartItemList
+    
+    if(cart.length == 0){
+      alert("Giỏ hàng của bạn chưa có sản phẩm nào để thanh toán")
+    }
+    else{
+      let user = JSON.parse(localStorage.getItem("user"))
+      const {emailLogin} = user
+      console.log(emailLogin);
+      let total =  getElement("#priceTotal").innerHTML.substring(0, getElement("#priceTotal").innerHTML.length -1)
+    
+      cartListGlobal.cartItemList = [];
+      //Total money
+      getElement("#priceTotal").innerHTML = `0$`;
+        //write to local 
+      wirteLocal(cartListGlobal,Cart_Local)
+      let date = new Date()
+      let hours = date.getHours()
+      let minute = date.getMinutes();
+      let day =date.getDate();
+      let month = date.getMonth()
+      let year = date.getFullYear();
+      let dataDate = `${day}-${month}-${year} ${hours}h:${minute}p`
+      let data = {user:emailLogin , bill:cart,date: dataDate,total:total}
+      axios.post('https://651320e48e505cebc2e99e3a.mockapi.io/bill',data)
+      .then(() => alert('Đơn hàng đã được order'))
+      renderSelectedCartList([]);
+    }
+  }
+  else{
+    alert("Bạn phải đăng nhập để đặt hàng")
+  }
 }
 
+const checkLogin = () =>{
+   if(localStorage.getItem("user")){
+      return true;
+   }
+   else{
+    return false;
+   }
+}
