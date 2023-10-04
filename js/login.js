@@ -17,7 +17,7 @@ let AdminOrder = document.getElementById("AdminOrderBtn")
 export let AdminOrderComponent = document.getElementById("adminOrder")
 export let AdminOrderDetail = document.getElementById("adminOrderDetail")
 
-
+console.log(111);
 
 const deleteActive = () =>{
     navItem.forEach((item) =>{
@@ -46,6 +46,7 @@ function saveAdmin(user){
 const saveUser = () =>{
    if(localStorage.getItem("user")){
         let users = JSON.parse(localStorage.getItem("user"))
+        console.log(users.nameLogin);
         deleteActive()
         navItem[0].classList.add('active')
         document.getElementById("login").classList.add("hide")
@@ -140,6 +141,7 @@ logout.addEventListener("click",()=>{
     detailHistory.classList.add("hide")
     AdminOrderComponent.classList.add("hide")
     AdminOrderDetail.classList.add("hide")
+    alert("Đăng xuất thành công")
     homebtn.classList.remove('hide')
 })
 

@@ -48,9 +48,9 @@ function renderSelectedCartList(cartList) {
         <h4>Tên sản phẩm: ${cart.name} </h4>
         <p>Số lượng: ${cart.qty}</p>    
         <p>Tổng tiền: ${cart.total}$</p>    
-        <button onclick='removeCartItem(${cart.id})'><i class="fas fa-trash"></i></button>	 
-        <button onclick='addItemQty(${cart.id})'><i class="fa-solid fa-plus"></i></button>
-        <button onclick='minusItemQty(${cart.id})'><i class="fa-solid fa-minus"></i></button> 	  
+        <button  class="trashQuantity" onclick='removeCartItem(${cart.id})'><i class="fas fa-trash"></i></button>	 
+        <button class="increaseQuantity" onclick='addItemQty(${cart.id})'><i class="fa-solid fa-plus"></i></button>
+        <button class="decreaseQuantity" onclick='minusItemQty(${cart.id})'><i class="fa-solid fa-minus"></i></button> 	  
       </div>
     </div>
   </div>

@@ -17,21 +17,12 @@
 </head>
 <body style="padding-top: 0px;">
   <header>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark ">
-        <div class="container">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary  container">
+        <div class="container-fluid">
           <a class="navbar-brand me-5" href="#">
             <i class="fa-lg fa-solid fa-robot me-3"></i>Cyber Phone
           </a>
-
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarColor01"
-            aria-controls="navbarColor01"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -46,7 +37,7 @@
                 <a class="nav-link hide" id="admin" href="#">Admin</a>
               </li>
               <li class="nav-item dropdown">
-                <a id="account" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="account" aria-expanded="false">
                   Tài khoản
                 </a>
                 <ul class="dropdown-menu">
@@ -205,33 +196,23 @@
 
 
     <section  class="home "  >
-      <nav class="navbar navbar-expand-lg bg-dark navbar-dark ">
+      <div class="cartBtn">
         <div class="container">
- 
-
-          <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav me-auto nav2">
-              <li class="nav-item text-center">
-                <a
-                  class="nav-link js-toggle-cart active"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <div>
-                    <i class="fa-solid fa-xl fa-shopping-cart"></i>
+          
+                  <div id="navbarColor01" class="js-toggle-cart active">
+                    <i  class="fa-solid fa-xl fa-shopping-cart "></i>
                     <span
                       class="badge rounded-pill badge-notification bg-light text-dark"
                       id="cartCount"
                     ></span>
+                    <div class="desc">Giỏ hàng</div>
                   </div>
-                  Giỏ hàng
-                </a>
-              </li>
-            </ul>
-          </div>
+                  
+                  
+
         </div>
-      </nav>
+      </div>
+      </div>     
       <div class="banner-image">
         <div class="container py-5">
           <div class="row py-5 align-items-center">
@@ -675,7 +656,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script type="module" src="./js/header.js"></script>
-    <script type="module" src="./js/login.js"></script>
     <script src="js/history.js"></script>
+    <script type="module" src="./js/login.js"></script>
 
 </html>
