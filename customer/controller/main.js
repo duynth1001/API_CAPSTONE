@@ -121,7 +121,8 @@ window.minusItemQty = (id) => {
   let cartListLocal = cartListGlobal.getSelectedCartList();
   const index = findIndex(id, cartListLocal);
   if (index != -1) {
-    if (cartListGlobal.cartItemList[index].qty == 0) {
+    if (cartListGlobal.cartItemList[index].qty == 1) {
+      removeCartItem(id)
       return;
     }
     cartListGlobal.cartItemList[index].qty--;

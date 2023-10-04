@@ -104,6 +104,7 @@ login.addEventListener("click",(e) =>{
                         let data = {emailLogin,nameLogin,login}
                         localStorage.setItem("user", JSON.stringify(data))
                         saveUser()
+                        alert("Đăng nhập thành công")
                 }
                 else{
                     mess.innerText = "Email or password wrong"
@@ -122,7 +123,7 @@ login.addEventListener("click",(e) =>{
 logout.addEventListener("click",()=>{
     homeComponent.classList.remove("hide")
     document.getElementById("history").classList.add("hide")
-    document.getElementById("account").innerText = "Account"
+    document.getElementById("account").innerText = "Tài khoản"
     logout.classList.add("hide")
     document.getElementById("login").classList.remove("hide")
     document.getElementById("register").classList.remove("hide")
@@ -135,6 +136,7 @@ logout.addEventListener("click",()=>{
     detailHistory.classList.add("hide")
     AdminOrderComponent.classList.add("hide")
     AdminOrderDetail.classList.add("hide")
+    alert("bạn đã đăng xuất")
 })
 
 
@@ -180,7 +182,7 @@ registerToShop.addEventListener("click",(e) =>{
                     if(data){
                         let newUser = {emailInput,passwordInput}
                         axios.post("https://651320e48e505cebc2e99e3a.mockapi.io/users",newUser)
-                        .then(() => alert("Register successfully"))
+                        .then(() => alert("Đăng ký thành công"))
                         navItem[0].classList.add("active")
                         loginComponent.classList.remove("hide")
                         registerComponent.classList.add("hide")
