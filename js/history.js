@@ -61,3 +61,28 @@ const goToDetail =(id) =>{
         document.getElementById("AdminOderDetailTable").innerHTML = newData
     })
 }
+
+
+const getHistory = () =>{
+    let newData;
+    if(localStorage.getItem("user")){
+        const {emailLogin} = user;
+        axios.get("https://651320e48e505cebc2e99e3a.mockapi.io/bill")
+        .then((data) => {
+            let listBill = data.data
+            document.getElementById("userName").innerText = "Khách hàng: " + user.nameLogin
+            let billUser = listBill.filter((item) =>item.user === emailLogin)
+          
+            newData =  billUser.map((item,index) => {
+                return(
+                    `<tr onclick="historyDetail(${item.id})" class="tableDetail"  >
+                        <th>${index+1}</th>
+                        <th>${item.date}</th>
+                        <th>${item.total}$</th>
+                    </tr>`
+                )
+            }).join("")
+            document.getElementById('historyTable').innerHTML = newData
+        })
+    }
+}

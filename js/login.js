@@ -17,7 +17,6 @@ let AdminOrder = document.getElementById("AdminOrderBtn")
 export let AdminOrderComponent = document.getElementById("adminOrder")
 export let AdminOrderDetail = document.getElementById("adminOrderDetail")
 
-console.log(111);
 
 const deleteActive = () =>{
     navItem.forEach((item) =>{
@@ -110,11 +109,14 @@ login.addEventListener("click",(e) =>{
                         let data = {emailLogin,nameLogin,login}
                         localStorage.setItem("user", JSON.stringify(data))
                         saveUser()
+                        getHistory()
+                        location.reload();
                 }
                 else{
                     mess.innerText = "Email or password wrong"
                 }
             })
+            
         }
         else{
             mess.innerText = "Password have more than 6 character"
@@ -223,26 +225,7 @@ history.addEventListener('click',() =>{
     adminComponent.classList.add("hide")
     AdminOrderComponent.classList.add("hide")
     AdminOrderDetail.classList.add("hide")
-    if(localStorage.getItem("user")){
-        const {emailLogin} = user;
-        axios.get("https://651320e48e505cebc2e99e3a.mockapi.io/bill")
-        .then((data) => {
-            let listBill = data.data
-            document.getElementById("userName").innerText = "Khách hàng: " + user.nameLogin
-            let billUser = listBill.filter((item) =>item.user === emailLogin)
-          
-            let dataTable =  billUser.map((item,index) => {
-                return(
-                    `<tr onclick="historyDetail(${item.id})" class="tableDetail"  >
-                        <th>${index+1}</th>
-                        <th>${item.date}</th>
-                        <th>${item.total}$</th>
-                    </tr>`
-                )
-            }).join("")
-            document.getElementById('historyTable').innerHTML = dataTable
-        })
-    }
+    getHistory()
 
 
 })
@@ -257,7 +240,7 @@ AdminOrder.addEventListener('click',()=>{
         let listBill = data.data
         console.log(listBill);
         let table  =  document.getElementById("AdminOderTable")
-        table.innerHTML = listBill.map((item) =>{
+        let newData = listBill.map((item) =>{
             return(
             ` <tr onclick="goToDetail(${item.id})" class="tableDetail"> 
                     <th>${item.id}</th>
@@ -267,8 +250,7 @@ AdminOrder.addEventListener('click',()=>{
                 </tr>`
             )
         }).join("")
-
-        
+        table.innerHTML = newData
     })
 })
 
