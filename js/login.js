@@ -1,13 +1,23 @@
 
+
 let admin = document.getElementById('admin')
 let login = document.getElementById("loginToShop")
 let loginComponent = document.querySelector(".login")
 let registerComponent = document.querySelector(".register")
 let homeComponent = document.querySelector(".home")
 let navItem = document.querySelectorAll(".nav-item .nav-link")
+let homebtn = document.querySelector('#home')
 let logout =  document.getElementById("logout")
 let adminComponent = document.querySelector(".admin")
 let registerToShop = document.getElementById("registerToShop")
+let historyComponent = document.querySelector(".history")
+let history = document.getElementById("history")
+let detailHistory = document.querySelector(".historyDetail")
+let AdminOrder = document.getElementById("AdminOrderBtn")
+export let AdminOrderComponent = document.getElementById("adminOrder")
+export let AdminOrderDetail = document.getElementById("adminOrderDetail")
+
+console.log(111);
 
 const deleteActive = () =>{
     navItem.forEach((item) =>{
@@ -19,7 +29,14 @@ function saveAdmin(user){
         if(user){
             if(user.emailLogin.toLowerCase() == "admin2003@gmail.com"){
                 admin.classList.remove("hide")
+                history.classList.add("hide")
                 homeComponent.classList.add("hide")
+                historyComponent.classList.add("hide")
+                homebtn.classList.add('hide')
+                adminComponent.classList.remove('hide')
+                detailHistory.classList.add("hide")
+                AdminOrderComponent.classList.add("hide")
+                AdminOrderDetail.classList.add("hide")
             }
             else{
             admin.classList.add("hide")
@@ -29,6 +46,7 @@ function saveAdmin(user){
 const saveUser = () =>{
    if(localStorage.getItem("user")){
         let users = JSON.parse(localStorage.getItem("user"))
+        console.log(users.nameLogin);
         deleteActive()
         navItem[0].classList.add('active')
         document.getElementById("login").classList.add("hide")
@@ -36,6 +54,7 @@ const saveUser = () =>{
         document.getElementById("history").classList.remove("hide")
         homeComponent.classList.remove("hide")
         loginComponent.classList.add("hide")
+        homebtn.classList.remove('hide')
         registerComponent.classList.add("hide")
         logout.classList.remove("hide")
         document.getElementById("account").innerText = users.nameLogin 
@@ -118,14 +137,24 @@ logout.addEventListener("click",()=>{
     admin.classList.add("hide")
     navItem[0].classList.add("active")
     adminComponent.classList.add("hide")
+    historyComponent.classList.add("hide")
+    detailHistory.classList.add("hide")
+    AdminOrderComponent.classList.add("hide")
+    AdminOrderDetail.classList.add("hide")
+    alert("Đăng xuất thành công")
+    homebtn.classList.remove('hide')
 })
 
 
 admin.addEventListener("click",()=>{
     adminComponent.classList.remove("hide")
     deleteActive()
-    navItem[1].classList.add("active")
+    navItem[2].classList.add("active")
     homeComponent.classList.add("hide")
+    historyComponent.classList.add("hide")
+    detailHistory.classList.add("hide")
+    AdminOrderComponent.classList.add("hide")
+    AdminOrderDetail.classList.add("hide")
 })
 
 
@@ -163,6 +192,10 @@ registerToShop.addEventListener("click",(e) =>{
                         navItem[0].classList.add("active")
                         loginComponent.classList.remove("hide")
                         registerComponent.classList.add("hide")
+                        historyComponent.classList.add("hide")
+                        detailHistory.classList.add("hide")
+                        AdminOrderComponent.classList.add("hide")
+                         AdminOrderDetail.classList.add("hide")
                         deleteActive()
  
                     }
@@ -183,5 +216,59 @@ registerToShop.addEventListener("click",(e) =>{
 
 
 
+history.addEventListener('click',() =>{
+    historyComponent.classList.remove("hide")
+    homeComponent.classList.add("hide")
+    detailHistory.classList.add("hide")
+    adminComponent.classList.add("hide")
+    AdminOrderComponent.classList.add("hide")
+    AdminOrderDetail.classList.add("hide")
+    if(localStorage.getItem("user")){
+        const {emailLogin} = user;
+        axios.get("https://651320e48e505cebc2e99e3a.mockapi.io/bill")
+        .then((data) => {
+            let listBill = data.data
+            document.getElementById("userName").innerText = "Khách hàng: " + user.nameLogin
+            let billUser = listBill.filter((item) =>item.user === emailLogin)
+          
+            let dataTable =  billUser.map((item,index) => {
+                return(
+                    `<tr onclick="historyDetail(${item.id})" class="tableDetail"  >
+                        <th>${index+1}</th>
+                        <th>${item.date}</th>
+                        <th>${item.total}$</th>
+                    </tr>`
+                )
+            }).join("")
+            document.getElementById('historyTable').innerHTML = dataTable
+        })
+    }
 
+
+})
+
+
+AdminOrder.addEventListener('click',()=>{
+    adminComponent.classList.add("hide")
+    AdminOrderComponent.classList.remove("hide")
+    AdminOrderDetail.classList.add("hide")
+    axios.get("https://651320e48e505cebc2e99e3a.mockapi.io/bill")
+    .then((data) =>{
+        let listBill = data.data
+        console.log(listBill);
+        let table  =  document.getElementById("AdminOderTable")
+        table.innerHTML = listBill.map((item) =>{
+            return(
+            ` <tr onclick="goToDetail(${item.id})" class="tableDetail"> 
+                    <th>${item.id}</th>
+                    <th>${item.date}</th>
+                    <th>${item.user}</th>
+                    <th>${item.total}</th>
+                </tr>`
+            )
+        }).join("")
+
+        
+    })
+})
 

@@ -32,3 +32,63 @@
 .register{
     @extend .login
 }
+.history{
+    margin-top: 100px;
+    
+}
+.historyDetail{
+    margin-top: 100px;
+    img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+}
+#adminButton{
+    display: flex;
+}
+#AdminOderDetailTable{
+    img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+}
+.tableDetail{
+    cursor: pointer;
+}
+.cartBtn{
+    background-color: black;
+    cursor: pointer;
+    .container{
+        padding-top: 20px;
+        display: flex;
+        justify-content: end;
+        color:  #e96443;
+        .js-toggle-cart {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+    }
+}
+.first{
+    margin-right: 10px;
+}
+.trashQuantity{
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 3px;
+    border-radius: 3px;
+    color: red;
+}
+.increaseQuantity{
+    @extend .trashQuantity;
+    color: black;
+}
+.decreaseQuantity{
+    @extend .trashQuantity;
+    color: black;
+}

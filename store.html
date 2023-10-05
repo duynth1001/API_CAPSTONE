@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyber Phone</title>
+    <link
+      rel="stylesheet"
+      href="./ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css"
+      integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="./npm/bootstrap-icons%401.8.1/font/bootstrap-icons.css"
+    />
+    <link href="./2.0/LineIcons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./releases/v6.1.1/css/all.css" />
+    <link rel="stylesheet" href="./customer/view/css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top mb-5">
+        <div class="container">
+          <a class="navbar-brand me-5" href="#">
+            <i class="fa-lg fa-solid fa-robot me-3"></i>Cyber Phone
+          </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarColor01"
+            aria-controls="navbarColor01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto nav2">
+              <li class="nav-item text-center">
+                <a
+                  class="nav-link js-toggle-cart active"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <div>
+                    <i class="fa-solid fa-xl fa-shopping-cart"></i>
+                    <span
+                      class="badge rounded-pill badge-notification bg-light text-dark"
+                      id="cartCount"
+                    ></span>
+                  </div>
+                  Giỏ hàng
+                </a>
+              </li>
+              <li class="nav-item text-center">
+                <a class="nav-link active " role="button" aria-haspopup="true" aria-expanded="false">
+                  <div>
+                    <i class="fa-solid fa-xl fa-shopping-cart"></i>
+                    
+                  </div>
+                  Lịch sử đơn hàng
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <div class="banner-image">
+      <div class="container py-5">
+        <div class="row py-5 align-items-center">
+          <div class="col-lg-6">
+            <h5 class="display-4 my-4 font-weight-bold text-white">
+              Tuyệt tác công nghệ từ Apple vào tháng 10 này
+            </h5>
+            <p class="h5 aa mb-4 pb-3 text-white-50">
+              Thiết kế khung viền từ titan chuẩn hàng không vũ trụ - Cực nhẹ, bền cùng viền cạnh mỏng cầm nắm thoải mái. Thoả sức sáng tạo và quay phim chuyên nghiệp - Cụm 3 camera sau đến 48MP và nhiều chế độ tiên tiến
+            </p>
+            <h3 class="text-white mb-5">Từ 28.999.000đ hoặc 1.181.000đ/tháng trong 24 tháng</h3>
+            <div class="d-flex">
+              <a href="#" class="btn btn-lg red-btn"
+                >Đăng ký nhận thông tin khi hàng về</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-6 text-lg-right text-center mt-5 mt-lg-0">
+            <div class="banner-phone-image">
+              <img src="https://cdn.tgdd.vn/Products/Images/42/305659/s16/iphone-15-pro-max-512gb-210923-114030.jpg" alt="phone-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="history">History</section>
+
+    <div class="container" id="content-wrap">
+      <main role="main" class="pb-5 mb-5">
+        <div class="container">
+          <div class="my-5">
+            <div class="container">
+              <select
+                class="form-select w-25 mb-5"
+                id="selectList"
+                aria-label="Default select example"
+              >
+                <option value="All">Tất cả sản phẩm</option>
+                <option value="Apple">Apple</option>
+                <option value="Samsung">Samsung</option>
+              </select>
+            </div>
+          
+            <div class="row mx-0 gy-4" id="phoneList"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="meh">
+      <div class="cart is-hidden">
+        <div class="cart__overlay"></div>
+        <div class="cart__contents">
+          <div class="cart__products">
+            <h2>Giỏ hàng của bạn</h2>
+            <div class="products" id="cartList"></div>
+          </div>
+          <div class="cart__totals">
+            <table class="totals">
+              <tbody>
+              
+                <tr>
+                  <th class="align-left">Tổng tiền</th>
+                  <td class="align-right" id="priceTotal">$0</td>
+                </tr>
+              </tbody>
+              <tfoot>
+              </tfoot>
+            </table>
+            <div class="form__footer">
+              <button class="btn first js-toggle-cart">
+                Tiếp tục mua sắm
+              </button>
+              <button class="btn yellow-btn" onclick="payNow()">Thanh toán</button>
+              <button
+                class="btn me-5 ms-0 px-4 red-btn"
+                onclick="emptyCart()"
+                id="emptyCart"
+              >
+                <i class="fa-solid fa-trash me-2"></i> Làm trống giỏ hàng
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer
+      class="text-center text-lg-start bg-dark text-light gradient-custom"
+    >
+      <!-- Section: Social media -->
+      <section class="d-flex justify-content-center p-4 border-bottom">
+        <!-- Left -->
+       
+        <!-- Left -->
+        <!-- Right -->
+        <div>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+        <!-- Right -->
+      </section>
+      <!-- Section: Social media -->
+      <!-- Section: Links  -->
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fa-lg fa-solid fa-robot me-3"></i>Cyber Phone
+              </h6>
+              <p>
+                Với lý tưởng sẽ trở thành một trong số những công ty  hàng đầu về Retail. Cyber Phone luôn nỗ lực mang lại cho khách hàng những dịch vụ tốt nhất trên thị trường hiện nay. </p>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Thương hiệu</h6>
+              <p>
+                <a href="#!" class="text-reset">iPhone</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Sumsung</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Xiaomi</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Oppo</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Hỗ trợ</h6>
+              <p>
+                <a href="#!" class="text-reset">Giá cả</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Cài đặt</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Đơn hàng</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Tư vấn trực tiếp</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Thông tin liên hệ</h6>
+              <p><i class="fas fa-home me-3"></i>Go Vap, Ho Chi Minh, VN</p>
+              <p>
+                <i class="fas fa-envelope me-3"></i>
+                cyberphone@mail.com
+              </p>
+              <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+              <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <!-- Section: Links  -->
+      <!-- Copyright -->
+      <div
+        class="text-center p-4"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        © 2023 Copyright:
+        <a class="text-reset fw-bold" href="">Cyber Phone</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <script
+      src="./ajax/libs/jquery/3.6.0/jquery.js"
+      integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="./ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
+      integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./npm/sweetalert2%4011"></script>
+    <script src="./1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="./axios%401.5.1/dist/axios.min.js"></script>
+    <script>
+      // toggle shopping cart
+      $(".js-toggle-cart, .cart__overlay").on("click", function () {
+        $(".cart").toggleClass("is-hidden");
+      });
+      // change nav bar color when scroll
+      $(window).on("scroll", function () {
+        if (this.scrollY > 100) {
+          $("nav").addClass("black");
+        } else {
+          $("nav").removeClass("black");
+        }
+      });
+    </script>
+    <script type="module" src="./customer/controller/main.js"></script>
+  </body>
+</html>

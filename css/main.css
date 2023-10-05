@@ -59,4 +59,71 @@
     margin: auto;
     width: 50vw;
   }
+}
+
+.history {
+  margin-top: 100px;
+}
+
+.historyDetail {
+  margin-top: 100px;
+}
+.historyDetail img {
+  width: 150px;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#adminButton {
+  display: flex;
+}
+
+#AdminOderDetailTable img {
+  width: 150px;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.tableDetail {
+  cursor: pointer;
+}
+
+.cartBtn {
+  background-color: black;
+  cursor: pointer;
+}
+.cartBtn .container {
+  padding-top: 20px;
+  display: flex;
+  justify-content: end;
+  color: #e96443;
+}
+.cartBtn .container .js-toggle-cart {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.first {
+  margin-right: 10px;
+}
+
+.trashQuantity, .decreaseQuantity, .increaseQuantity {
+  border: 1px solid #ccc;
+  background-color: white;
+  padding: 3px;
+  border-radius: 3px;
+  color: red;
+}
+
+.increaseQuantity {
+  color: black;
+}
+
+.decreaseQuantity {
+  color: black;
 }/*# sourceMappingURL=main.css.map */

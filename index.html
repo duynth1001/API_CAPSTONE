@@ -6,41 +6,94 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.css">
+  
+  <link href="./2.0/LineIcons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./releases/v6.1.1/css/all.css" />
+  <link rel="stylesheet" href="./customer/view/css/style.css" />
+  <link rel="stylesheet" href="./admin/view/css/modal.css" />
+  <link rel="stylesheet" href="./admin/view/css/style.css" />
+ 
+
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container">
-              <a class="navbar-brand" href="#">Navbar</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="home" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link hide" id="admin" href="#">Admin</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a id="account" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Account
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" id="login" href="#">Login</a></li>
-                      <li><a class="dropdown-item" id="register" href="#">Register</a></li>
-                      <li><a class="dropdown-item hide" id="history" href="#">History</a></li>
-                      <li><a class="dropdown-item hide" id="logout" href="#">Logout</a></li>
-                    </ul>
-                  </li>
+<body style="padding-top: 0px;">
+  <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary  container">
+        <div class="container-fluid">
+          <a class="navbar-brand me-5" href="#">
+            <i class="fa-lg fa-solid fa-robot me-3"></i>Cyber Phone
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" id="home" href="#">Cửa hàng</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link hide" id="history" href="#">Lịch sử đặt hàng</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link hide" id="admin" href="#">Admin</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="account" aria-expanded="false">
+                  Tài khoản
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" id="login" href="#">Đăng nhập</a></li>
+                  <li><a class="dropdown-item" id="register" href="#">Đăng ký</a></li>
+                  <li><a class="dropdown-item hide" id="logout" href="#">Đăng xuất</a></li>
                 </ul>
-              </div>
-              <a id="cart" href="#">Cart</a>
-            </div>
-          </nav>
-    </header>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
+
+
+
+    <section class="history hide container">
+      <h3>Lịch sử đặt hàng</h3>
+      <h5 id="userName"></h5>
+      <h5 id="userEmail"></h5>
+      <table class="table" style="margin-top:10px;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ngày đặt</th>
+            <th scope="col">Tổng hóa đơn</th>
+          </tr>
+        </thead>
+        <tbody id="historyTable">
+          
+        </tbody>
+      </table>
+    </section>
+
+    <section class="historyDetail hide container">
+      <h3>Chi tiết đơn hàng</h3>
+      <h5 id= date></h5>
+      <h5 id="total"></h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Ảnh</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Tổng tiền</th>
+          </tr>
+        </thead>
+        <tbody id="historyTableDetail">
+          
+        </tbody>
+      </table>
+    </section>
+
+
 
     <section class="login hide">
       <h2 style="text-align: center;">Login</h2>
@@ -62,19 +115,12 @@
                   <label for="exampleInputPassword1" class="form-label">Password</label>
                   <input type="password" class="form-control" id="loginInputPassword">
                 </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
                 <button id="loginToShop" type="submit" class="btn btn-primary">Login</button>
               </form>
             </div>
         </div>
       </div>
     </section>
-
-    
-
     <section class="register hide">
       <h2 style="text-align: center;">Register</h2>
       <div class="container">
@@ -107,19 +153,510 @@
       </div>
     </section>
 
-    <section class="home">
-      <h1>Hello world</h1>
+    <section class="hide container" id="adminOrder">
+      <h3>Tất cả đơn hàng khách đặt</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ngày</th>
+            <th scope="col">Khách hàng</th>
+            <th scope="col">Tổng đơn</th>
+          </tr>
+        </thead>
+        <tbody id="AdminOderTable">
+          
+          
+        </tbody>
+      </table>
+    </section>
+
+    <section class="hide container" id="adminOrderDetail">
+      <h3>Chi tiết đơn hàng</h3>
+      <h5 id="adminOrderCustomer"></h5>
+      <h5 id="adminOderDate"></h5>
+      <h5 id="adminOderTotal"></h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Tổng tiền</th>
+          </tr>
+        </thead>
+        <tbody id="AdminOderDetailTable">
+          
+          
+        </tbody>
+      </table>
     </section>
 
 
-    <section class="admin hide">Amin home</section>
+    <section  class="home "  >
+      <div class="cartBtn">
+        <div class="container">
+          
+                  <div id="navbarColor01" class="js-toggle-cart active">
+                    <i  class="fa-solid fa-xl fa-shopping-cart "></i>
+                    <span
+                      class="badge rounded-pill badge-notification bg-light text-dark"
+                      id="cartCount"
+                    ></span>
+                    <div class="desc">Giỏ hàng</div>
+                  </div>
+                  
+                  
+
+        </div>
+      </div>
+      </div>     
+      <div class="banner-image">
+        <div class="container py-5">
+          <div class="row py-5 align-items-center">
+            <div class="col-lg-6">
+              <h5 class="display-4 my-4 font-weight-bold text-white">
+                Tuyệt tác công nghệ từ Apple vào tháng 10 này
+              </h5>
+              <p class="h5 aa mb-4 pb-3 text-white-50">
+                Thiết kế khung viền từ titan chuẩn hàng không vũ trụ - Cực nhẹ, bền cùng viền cạnh mỏng cầm nắm thoải mái. Thoả sức sáng tạo và quay phim chuyên nghiệp - Cụm 3 camera sau đến 48MP và nhiều chế độ tiên tiến
+              </p>
+              <h3 class="text-white mb-5">Từ 28.999.000đ hoặc 1.181.000đ/tháng trong 24 tháng</h3>
+              <div class="d-flex">
+                <a href="#" class="btn btn-lg red-btn"
+                  >Đăng ký nhận thông tin khi hàng về</a
+                >
+              </div>
+            </div>
+            <div class="col-lg-6 text-lg-right text-center mt-5 mt-lg-0">
+              <div class="banner-phone-image">
+                <img src="https://cdn.tgdd.vn/Products/Images/42/305659/s16/iphone-15-pro-max-512gb-210923-114030.jpg" alt="phone-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container" id="content-wrap">
+        <main role="main" class="pb-5 mb-5">
+          <div class="container">
+            <div class="my-5">
+              <div class="container">
+                <select
+                  class="form-select w-25 mb-5"
+                  id="selectList"
+                  aria-label="Default select example"
+                >
+                  <option value="All">Tất cả sản phẩm</option>
+                  <option value="Apple">Apple</option>
+                  <option value="Samsung">Samsung</option>
+                </select>
+              </div>
+            
+              <div class="row mx-0 gy-4" id="phoneList"></div>
+            </div>
+          </div>
+        </main>
+      </div>
+      <div class="meh">
+        <div class="cart is-hidden">
+          <div class="cart__overlay"></div>
+          <div class="cart__contents">
+            <div class="cart__products">
+              <h2>Giỏ hàng của bạn</h2>
+              <div class="products" id="cartList"></div>
+            </div>
+            <div class="cart__totals">
+              <table class="totals">
+                <tbody>
+                
+                  <tr>
+                    <th class="align-left">Tổng tiền</th>
+                    <td class="align-right" id="priceTotal">$0</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+              </table>
+              <div class="form__footer">
+                <button class="btn first js-toggle-cart">
+                  Tiếp tục mua sắm
+                </button>
+                <button class="btn yellow-btn" onclick="payNow()">Thanh toán</button>
+                <button
+                  class="btn me-5 ms-0 px-4 red-btn"
+                  onclick="emptyCart()"
+                  id="emptyCart"
+                >
+                  <i class="fa-solid fa-trash me-2"></i> Làm trống giỏ hàng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer
+        class="text-center text-lg-start bg-dark text-light gradient-custom"
+      >
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center p-4 border-bottom">
+          <!-- Left -->
+         
+          <!-- Left -->
+          <!-- Right -->
+          <div>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+          <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section class="">
+          <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  <i class="fa-lg fa-solid fa-robot me-3"></i>Cyber Phone
+                </h6>
+                <p>
+                  Với lý tưởng sẽ trở thành một trong số những công ty  hàng đầu về Retail. Cyber Phone luôn nỗ lực mang lại cho khách hàng những dịch vụ tốt nhất trên thị trường hiện nay. </p>
+              </div>
+              <!-- Grid column -->
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">Thương hiệu</h6>
+                <p>
+                  <a href="#!" class="text-reset">iPhone</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Sumsung</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Xiaomi</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Oppo</a>
+                </p>
+              </div>
+              <!-- Grid column -->
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">Hỗ trợ</h6>
+                <p>
+                  <a href="#!" class="text-reset">Giá cả</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Cài đặt</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Đơn hàng</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Tư vấn trực tiếp</a>
+                </p>
+              </div>
+              <!-- Grid column -->
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">Thông tin liên hệ</h6>
+                <p><i class="fas fa-home me-3"></i>Go Vap, Ho Chi Minh, VN</p>
+                <p>
+                  <i class="fas fa-envelope me-3"></i>
+                  cyberphone@mail.com
+                </p>
+                <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+              </div>
+              <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+          </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div
+          class="text-center p-4"
+          style="background-color: rgba(0, 0, 0, 0.05)"
+        >
+          © 2023 Copyright:
+          <a class="text-reset fw-bold" href="">Cyber Phone</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
      
+    </section>
 
-   
+  <section class="admin hide">
+      <div class="container py-5" id="content-wrap">
+        <main role="main" class="mt-5">
+          <div class="d-flex justify-content-between mb-2 py-3 px-2 phoneBanner">
+            <h3 class="text-light">Quản trị danh sách sản phẩm</h3>
+            <div class="text-right">
+              <div id="adminButton">
+                <button type="button" id="AdminOrderBtn" class="btn btn-primary">Đơn hàng order</button>
+                <button
+                  type="button"
+                  class="btn btn-banner"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  id="addPhoneForm"
+                >
+                <i class="fa-solid fa-circle-plus me-2"></i> Thêm sản phẩm
+                </button>
+              </div>
+            </div>
+        
+          </div>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm theo tên" id="searchName">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="btnTimSP"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
+            <br>
+           
+            <div class="row">
+              <div class="col">
+              <button
+                type="button"
+                class="btn btn-banner"
+                id="sortProductDes"
+              >
+              <i class="fa-solid fa-sort-down"></i> Sắp xếp sản phẩm giảm dần theo giá tiền
+            </button>
+            </div>
+            <div class="col">
+              <button
+              type="button"
+              class="btn btn-banner"
+              id="sortProductAsc"
+            >
+            <i class="fa-solid fa-sort-up"></i> Sắp xếp sản phẩm tăng dần theo giá tiền
+            </button>
+            </div>
+            </div>
+          <div class="table-responsive">
+            <table class="table display" id="myTable">
+              <thead class="">
+                <tr>
+                  <th>STT</th>
+                  <th>Tên sản phẩm</th>
+                  <th>Hãng sản xuất</th>
+                  <th>Giá</th>
+                  <th>Số lượng</th>
+                  <th>Hình ảnh</th>
+                  <th><em class="fa fa-cog"></em> Hành động</th>
+                </tr>
+              </thead>
+              <tbody id="tablePhone"></tbody>
+            </table>
+          </div>
+  
+          <div class="modal fade" id="exampleModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <header class="head-form mb-0">
+                  <h3 id="header-title">Quản trị danh sách sản phẩm</h3>
+                </header>
+  
+                <!-- Modal Header -->
+                <!-- 	<div class="modal-header">
+              <h4 class="modal-title" id="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div> -->
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <form role="form" id="formPhone">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="fa-solid fa-signature"></i
+                              ></span>
+                        </div>
+                        <input
+                          type="text"
+                          name="name"
+                          id="name"
+                          class="form-control input-sm"
+                          placeholder="Tên sản phẩm"
+                        />
+                      </div>
+                      <span class="sp-thongbao" id="tbname"></span>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="fa-solid fa-store"></i></span>
+                        </div>
+                        <select class="form-control" name="chucvu" id="type">
+                          <option selected="" disabled="">Hãng sản xuất</option>
+                          <option>Apple</option>
+                          <option>Samsung</option>
+                        </select>
+                      </div>
+  
+                      <span class="sp-thongbao" id="tbtype"></span>
+                    </div>
+  
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="fa-solid fa-money-bill"></i></span>
+                        </div>
+                        <input
+                          type="text"
+                          id="price"
+                          class="form-control input-sm"
+                          placeholder="Đơn giá"
+                        />
+                      </div>
+  
+                      <span class="sp-thongbao" id="tbprice"></span>
+                    </div>
+  
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="fa-solid fa-camera"></i
+                          ></span>
+                        </div>
+                        <input
+                          type="text"
+                          id="imageUrl"
+                          class="form-control"
+                          placeholder="Link hình ảnh"
+                        />
+                      </div>
+  
+                      <span class="sp-thongbao" id="tbimageUrl"></span>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="fa-solid fa-cart-plus"></i></span>
+                        </div>
+                        <input
+                          type="text"
+                          id="qty"
+                          class="form-control input-sm"
+                          placeholder="Số lượng"
+                        />
+                      </div>
+  
+                      <span class="sp-thongbao" id="tbqty"></span>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="fa-solid fa-book-open-reader"></i></span>
+                        </div>
+                        <input
+                          type="text"
+                          id="heading"
+                          class="form-control"
+                          placeholder="Tiêu đề"
+                        />
+                      </div>
+  
+                      <span class="sp-thongbao" id="tbheading"></span>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="fa-solid fa-comment"></i
+                          ></span>
+                        </div>
+                        <input
+                          type="text"
+                          id="desc"
+                          class="form-control"
+                          placeholder="Mô tả"
+                        />
+                      </div>
+  
+                      <span class="sp-thongbao" id="tbdesc"></span>
+                    </div>
+                  </form>
+                </div>
+  
+                <!-- Modal footer -->
+                <div class="modal-footer" id="modal-footer">
+                  <button type="button" class="btn" id="btnAddPhone">
+                    Thêm sản phẩm
+                  </button>
+                  <button id="btnUpdate" type="button" class="btn">
+                    Cập nhật sản phẩm
+                  </button>
+                  <button
+                    id="btnClose"
+                    type="button"
+                    class="btn btn-danger"
+                    data-bs-dismiss="modal"
+                  >
+                    Đóng
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
 
+      <script type="module" src="./admin/controller/main.js"></script>
+    </section> 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      // toggle shopping cart
+      $(".js-toggle-cart, .cart__overlay").on("click", function () {
+        $(".cart").toggleClass("is-hidden");
+      });
+      // change nav bar color when scroll
+      $(window).on("scroll", function () {
+        if (this.scrollY > 100) {
+          $("nav").addClass("black");
+        } else {
+          $("nav").removeClass("black");
+        }
+      });
+    </script>
+    <script type="module" src="./customer/controller/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script type="module" src="./js/header.js"></script>
+    <script src="js/history.js"></script>
     <script type="module" src="./js/login.js"></script>
-</body>
+
 </html>
