@@ -110,6 +110,8 @@ login.addEventListener("click",(e) =>{
                         let data = {emailLogin,nameLogin,login}
                         localStorage.setItem("user", JSON.stringify(data))
                         saveUser()
+                        alert("Đăng nhập thành công")
+                        window.location.reload()
                 }
                 else{
                     mess.innerText = "Email or password wrong"
@@ -143,6 +145,7 @@ logout.addEventListener("click",()=>{
     AdminOrderDetail.classList.add("hide")
     alert("Đăng xuất thành công")
     homebtn.classList.remove('hide')
+    
 })
 
 
@@ -242,6 +245,8 @@ history.addEventListener('click',() =>{
             }).join("")
             document.getElementById('historyTable').innerHTML = dataTable
         })
+        
+        
     }
 
 
